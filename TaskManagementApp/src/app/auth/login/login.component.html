@@ -1,0 +1,42 @@
+<div>
+    @if (isLoading) {
+    <div class="mx-auto loader"></div>
+    }@else {
+    <div class="login-container">
+        <div class="login-left">
+            <h2>Login! 👋</h2>
+            <p>or Login with Email</p>
+            <form ((submit))="onSubmit()">
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="test@atheros.ai"
+                        [(ngModel)]="email" name="email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input [type]="property" class="form-control" id="password" placeholder="******"
+                            [(ngModel)]="password" name="password">
+                        <!-- <button type="button" class="btn btn-outline-primary" id="togglePassword" (click)="togglePasswordVisibility()">
+                            <i [class]=" isPasswordVisible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+                        </button> -->
+                        <span class="password-toggle-icon" (click)="togglePasswordVisibility()"><i
+                                [class]=" isPasswordVisible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-signin btn-submit" (click)="onSubmit()">Sign In</button>
+            </form>
+            <p>Don't have an account? <a routerLink="/register">Sign Up Now</a></p>
+        </div>
+        <div class="login-right">
+            <div class="login-info">
+                <img src="assets/task-logo.png" alt="Dashboard example">
+            </div>
+        </div>
+    </div>
+
+    }
+
+</div>

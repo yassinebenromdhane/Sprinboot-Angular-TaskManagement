@@ -1,0 +1,41 @@
+<div class="modal fade" [attr.id]="'modalUser'+task.id" [attr.data-bs-backdrop]="'static'" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalUser" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ task.taskName }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{ task | json }}
+        <form #taskForm = "ngForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="title"  class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="task.taskName" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" [(ngModel)]="task.taskDescription" name="description">
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" aria-label="Default select example" id="status" [(ngModel)]="task.taskStatus" name="status">
+              <option selected>Status</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="due_date" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="due_date" [(ngModel)]="task.dueDate" name="dueDate">
+          </div>
+          <button type="submit" class="btn btn-primary"> ok </button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
